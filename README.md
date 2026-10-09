@@ -2,37 +2,36 @@
 
 **Автор:** KRa Tos (Константин)
 
-Веб-приложение для генерации исходников модов DayZ по [Bohemia Modding Structure](https://community.bohemia.net/wiki/DayZ:Modding_Structure).
+Веб- и **портативное** приложение для генерации исходников модов DayZ по [Bohemia Modding Structure](https://community.bohemia.net/wiki/DayZ:Modding_Structure).
 
-## Открыть
+## Веб
 
-1. Скачайте [`index.html`](index.html) (Raw → Save)
-2. Откройте в браузере
-3. Нажмите **Сгенерировать** → **Скачать ZIP**
+Скачайте [`index.html`](index.html) → откройте в браузере.
 
-Либо: [GitHub Pages](https://barsboot-bot.github.io/dayz-mod-builder/) (если включены Pages на ветке `main` / root).
+## Portable Windows 10/11
 
-## Файлы
+Папка [`portable/`](portable/):
 
-| Файл | Назначение |
-|------|------------|
-| `index.html` | DayZ Mod Builder v2.0 — генератор структуры мода |
-| `unesennye_mod_builder.html` | Хелпер Unesennye (serverDZ.cfg, RPC, stringtable) |
+| Файл | Запуск |
+|------|--------|
+| `START.cmd` / `DayZModBuilder.vbs` | Edge/Chrome в режиме приложения (без консоли) |
+| `DayZModBuilder.bat` | То же через BAT |
+| `DayZModBuilder_WinForms.bat` | Отдельное окно Windows (PowerShell) |
 
-## Что генерирует
+**Установка не нужна.** Распакуйте репозиторий или ZIP и запустите `portable\START.cmd`.
 
-- `mod.cpp`
-- `Scripts/config.cpp` (CfgPatches + CfgMods)
-- слои `3_Game` / `4_World` / `5_Mission`
-- `stringtable.csv`, `README.md`
-- опционально `serverDZ.cfg`, предмет CfgVehicles
-- шаблоны: Hello World, Script, Item, Client+Server split, Unesennye skeleton
+Полный ZIP-дистрибутив с `app\index.html` внутри: соберите локально или скачайте релиз (если опубликован).
 
-## После ZIP
+## Генерация
 
-1. Исходники → `P:\Prefix`
+- `mod.cpp`, `Scripts/config.cpp`
+- слои 3_Game / 4_World / 5_Mission
+- stringtable, README, опционально serverDZ.cfg
+- шаблоны: Hello World, Script, Item, Client+Server, Unesennye
+
+## После ZIP исходников
+
+1. `P:\Prefix`
 2. Addon Builder → PBO
-3. `@Prefix/Addons/*.pbo` + `.bikey` в `keys/`
+3. `@Prefix/Addons` + `keys/*.bikey`
 4. `-mod=@Prefix` или `-serverMod=@Prefix`
-
-`verifySignatures = 2` требует ключ мода на сервере.
